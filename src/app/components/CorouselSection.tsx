@@ -1,8 +1,9 @@
 import PrimeCarousel from "@/components/corousel/PrimeCorousel";
+import { SmallShowInterface } from "@/interface/SmallShowInterface";
 
 export default function CorouselSection({sectionName, list} : {
     sectionName: string;
-    list: any[];
+    list: SmallShowInterface[];
 } ) {
     return (
         <section className="w-full flex flex-col gap-2">

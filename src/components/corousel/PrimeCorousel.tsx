@@ -1,16 +1,18 @@
 'use client'
 
+import { SmallShowInterface } from '@/interface/SmallShowInterface';
 import { Carousel } from 'primereact/carousel'
+import ImageOverlay from '../overlay/ImageOverlay';
 
 
 export default function PrimeCarousel({list}: {
-  list: any[];
+  list: SmallShowInterface[];
 }) {
-  const itemTemplate = (item: any) => {
+  const itemTemplate = (item: SmallShowInterface) => {
     return (
       <div className="ml-1">
-        <div className={`h-40 rounded-lg min-w-[220px] shadow-md text-white text-xl ${item.color}`}>
-          {item.name}
+        <div className={`h-40 rounded-lg min-w-[220px] shadow-md text-white text-xl`}>
+          <ImageOverlay show={item} />
         </div>
       </div>
     )
@@ -25,7 +27,8 @@ export default function PrimeCarousel({list}: {
         numScroll={1}
         circular
         autoplayInterval={3000}
-        page={0}
+        nextIcon={<i/>}
+        prevIcon={<i/>}
       />
     </div>
   )

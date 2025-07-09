@@ -3,20 +3,10 @@ import MainShowInfo from "./components/MainShowInfo";
 import PlayBtn from "@/components/button/PlayBtn";
 import MoreInfoBtn from "@/components/button/MoreInfoBtn";
 import CorouselSection from "./components/CorouselSection";
+import { shows } from "@/data/mockShow";
+
 
 export default function Home() {
-
-  const MOCKMOVIE = [
-    { name: 'Slide 1', color: 'bg-red-500' },
-    { name: 'Slide 2', color: 'bg-green-500' },
-    { name: 'Slide 3', color: 'bg-blue-500' },
-    { name: 'Slide 4', color: 'bg-yellow-500' },
-    { name: 'Slide 5', color: 'bg-purple-500' },
-    { name: 'Slide 6', color: 'bg-pink-500' },
-    { name: 'Slide 7', color: 'bg-orange-500' },
-    { name: 'Slide 8', color: 'bg-teal-500' },
-  ]
-  
   return (
     <div>
       <Image 
@@ -44,7 +34,7 @@ export default function Home() {
         </div>
 
       <div className="w-full">
-        <CorouselSection sectionName="Popular on Netflix" list={MOCKMOVIE} />
+        <CorouselSection sectionName="Popular on Netflix" list={shows} />
       </div>
     </div>
   );
