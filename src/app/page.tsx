@@ -11,10 +11,9 @@ export default function Home() {
     <div>
       <Image 
         src='/images/MainShowBackground.svg' 
-        width={1280} 
-        height={720}
+        fill
         alt='Main Show Background'
-        className='fixed top-0 left-0 -z-10 w-full h-auto object-cover'
+        className='fixed top-0 left-0 -z-10 w-full h-auto object-cover object-[70%_center] lg:object-center'
         />
 
         <div className="invisible w-full h-40">

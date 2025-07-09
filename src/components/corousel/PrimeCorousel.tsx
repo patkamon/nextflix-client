@@ -11,7 +11,7 @@ export default function PrimeCarousel({list}: {
   const itemTemplate = (item: SmallShowInterface) => {
     return (
       <div className="ml-1">
-        <div className={`h-40 rounded-lg min-w-[220px] shadow-md text-white text-xl`}>
+        <div className={`h-fit rounded-lg shadow-md text-white text-xl`}>
           <ImageOverlay show={item} />
         </div>
       </div>
