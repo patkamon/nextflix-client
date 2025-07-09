@@ -19,7 +19,7 @@ export default function Navbar() {
       ]
     return (
         
-        <nav className="absolute flex w-full text-white py-4 px-10 gap-4 items-center bg-gradient-to-b from-black/100 to-transparent">
+        <nav className="fixed left-0 flex w-full text-white py-4 px-10 gap-4 items-center bg-gradient-to-b from-black/100 to-transparent">
             <Image
                 src="/images/NetflixLogo.svg"
                 alt="Netflix Logo"
