@@ -23,12 +23,41 @@ export default function PrimeCarousel({list}: {
       <Carousel
         value={list}
         itemTemplate={itemTemplate}
-        numVisible={6}
+        numVisible={8}
         numScroll={1}
         circular
         autoplayInterval={3000}
         nextIcon={<i/>}
         prevIcon={<i/>}
+        responsiveOptions={
+          [
+            {
+              breakpoint: '1600px',
+              numVisible: 7,
+              numScroll: 1
+            },
+            {
+              breakpoint: '1200px',
+              numVisible: 6,
+              numScroll: 1
+            },
+            {
+              breakpoint: '1024px',
+              numVisible: 5,
+              numScroll: 1
+            },
+            {
+              breakpoint: '768px',
+              numVisible: 4,
+              numScroll: 1
+            },
+            {
+              breakpoint: '560px',
+              numVisible: 3,
+              numScroll: 1
+            },
+          ]
+        }
       />
     </div>
   )

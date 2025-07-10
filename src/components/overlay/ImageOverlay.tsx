@@ -10,7 +10,7 @@ export default function ImageOverlay({ show }: {
             <Image
                 src={show.image}
                 alt={show.name}
-                className="object-cover rounded-lg w-auto"
+                className="object-cover rounded-lg w-auto aspect-4/5 md:aspect-5/3"
                 width={300}
                 height={200}
             />
