@@ -1,56 +1,37 @@
-'use client'
-
-import Link from 'next/link'
 import Image from "next/image";
-import { usePathname } from 'next/navigation'
-import clsx from 'clsx'
 import { Bell, Search, Square } from 'lucide-react';
+import NavbarList from "./list/NavbarList";
+import NavbarSmList from "./list/NavbarSmList";
 
 export default function Navbar() {
-    const pathname = usePathname()
-
-    const navItems = [
-        { name: "Home", href: "/" },
-        { name: "TV Shows", href: "/tv-shows" },
-        { name: "Movies", href: "/movies" },
-        { name: "New & Popular", href: "/new-popular" },
-        { name: "My List", href: "/my-list" },
-        { name: "Browse by Languages", href: "/languages" }
-      ]
     return (
-        
-        <nav className="fixed left-0 flex w-full text-white py-4 px-10 gap-4 items-center bg-gradient-to-b from-black/100 to-transparent">
-            <Image
-                src="/images/NetflixLogo.svg"
-                alt="Netflix Logo"
-                width={128}
-                height={60}
-            />
-            {navItems.map((item) => {
-                    const isActive = pathname === item.href
-                    return (
-                    <Link
-                        key={item.name}
-                        href={item.href}
-                        className={clsx(
-                        'transition-all duration-300 px-3 py-1 rounded-md',
-                        isActive
-                            ? 'text-white scale-110 font-semibold'
-                            : 'text-gray-300 hover:text-white hover:scale-105'
-                        )}
-                    >
-                        {item.name}
-                    </Link>
-                    )
-                })}
-
-            <div className="ml-auto flex items-center gap-4">
-                <Search/>
-                Kids
-                <Bell/>
-                <Square />
+        <nav className="fixed left-0 w-full text-white md:px-10 md:py-4 py-10 px-4  bg-gradient-to-b from-black/100 to-transparent">
+            <div className="flex items-center gap-4">
+                    <Image
+                        src="/images/NetflixLogo.svg"
+                        alt="Netflix Logo"
+                        width={128}
+                        height={60}
+                        className='w-1/10 md:block hidden'
+                    />
+                <Image
+                    src="/images/NetflixLogoSM.svg"
+                    alt="Netflix Logo"
+                    width={128}
+                    height={60}
+                    className='w-1/20 md:hidden h'
+                />
+                <NavbarList />
+                <div className="ml-auto flex items-center gap-4">
+                    <Search className='md:block hidden' />
+                    <span className='md:block hidden'>
+                        Kids
+                    </span>
+                    <Bell className='md:block hidden' />
+                    <Square fill='white' className='w-8 h-8' />
+                </div>
             </div>
-
-      </nav>
+            <NavbarSmList />
+        </nav>
     );
 }
