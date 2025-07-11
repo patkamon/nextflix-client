@@ -10,9 +10,16 @@ export default function ImageOverlay({ show }: {
             <Image
                 src={show.image}
                 alt={show.name}
-                className="object-cover rounded-lg w-auto aspect-4/5 md:aspect-5/3"
+                className="object-fit rounded-lg w-auto aspect-4/5 block md:hidden"
                 width={300}
                 height={200}
+            />
+            <Image
+                src={show.backdropImage || show.image}
+                alt={show.name}
+                className="hidden md:block object-fit rounded-lg w-auto aspect-5/3"
+                width={500}
+                height={300}
             />
 
             {/* Overlay image (conditional) */}

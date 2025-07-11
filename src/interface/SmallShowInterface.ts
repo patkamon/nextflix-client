@@ -2,6 +2,7 @@ export interface SmallShowInterface {
     id: string;
     name: string;
     image: string;
+    backdropImage?: string;
     description?: string;
     type?: "anime" | "tv" | "movie";
     status?: "new" | "popular" | "trending" | "upcoming" | "classic";
