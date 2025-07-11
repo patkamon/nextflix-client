@@ -1,11 +1,12 @@
 import Image from "next/image";
 
 import CorouselSection from "./components/CorouselSection";
-import { shows } from "@/data/mockShow";
 import MainInfo from "./components/MainInfo";
+import { getMovieList } from "@/api/movie";
 
 
-export default function Home() {
+export default async function Home() {
+  const shows = await getMovieList()
   return (
     <div className="h-screen">
       <Image
