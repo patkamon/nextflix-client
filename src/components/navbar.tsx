@@ -15,7 +15,7 @@ export default function Navbar() {
                         className='w-1/10 md:block hidden'
                     />
                 <Image
-                    src="/images/NetflixLogoSM.svg"
+                    src="/images/NetflixLogoSm.svg"
                     alt="Netflix Logo"
                     width={128}
                     height={60}
