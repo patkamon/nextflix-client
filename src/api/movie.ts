@@ -1,5 +1,6 @@
 export async function getMovieList() {
-  const res = await fetch(`http://localhost:3000/show/movie_list`);
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const res = await fetch(`${baseUrl}/show/movie_list`);
   if (!res.ok) {
     return null
   };
