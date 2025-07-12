@@ -3,11 +3,19 @@
 import { SmallShowInterface } from '@/interface/SmallShowInterface';
 import { Carousel } from 'primereact/carousel'
 import ImageOverlay from '../overlay/ImageOverlay';
+import { toast } from 'react-toastify';
 
-
-export default function PrimeCarousel({list}: {
-  list: SmallShowInterface[];
+export default function PrimeCarousel({shows}: {
+  shows: SmallShowInterface[] | null;
 }) {
+  console.log(shows)
+  if (!shows){
+    toast.error("Failed to fetch shows");
+  }else if (shows.length === 0) {
+    toast.warn("Empty list, no shows to display");
+    return <div className="text-white text-center">No shows available</div>;
+  }
+
   const itemTemplate = (item: SmallShowInterface) => {
     return (
       <div className="ml-1">
@@ -21,7 +29,7 @@ export default function PrimeCarousel({list}: {
   return (
     <div className="w-full">
       <Carousel
-        value={list}
+        value={shows || []}
         itemTemplate={itemTemplate}
         numVisible={8}
         numScroll={1}

@@ -4,7 +4,6 @@ import CorouselSection from "./components/CorouselSection";
 import MainInfo from "./components/MainInfo";
 import { getMovieList } from "@/api/movie";
 
-
 export default async function Home() {
   const shows = await getMovieList()
   return (
@@ -32,7 +31,7 @@ export default async function Home() {
       </div>
 
       <div className="w-full px-4 pb-8">
-        <CorouselSection sectionName="Popular on Netflix" list={shows} />
+        <CorouselSection sectionName="Popular on Netflix" shows={shows} />
       </div>
     </div>
   );
