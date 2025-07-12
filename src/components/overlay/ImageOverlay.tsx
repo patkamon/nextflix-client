@@ -1,16 +1,36 @@
+'use client'
 import { SmallShowInterface } from "@/interface/SmallShowInterface";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ImageOverlay({ show }: {
     show: SmallShowInterface
 }) {
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
     return (
         <div className="relative w-fit h-auto">
+            {loading && !error && (
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                    Loading
+                </div>
+            )}
+            {error && (
+                <div className="absolute inset-0 flex items-center justify-center bg-red-100 text-red-500">
+                Failed to load image
+                </div>
+            )}
+
             {/* Base image */}
             <Image
                 src={show.image}
                 alt={show.name}
                 className="object-fit rounded-lg w-auto aspect-4/5 block md:hidden"
+                onLoadingComplete={() => setLoading(false)}
+                onError={() => {
+                setError(true);
+                setLoading(false);
+                }}
                 width={300}
                 height={200}
             />
@@ -18,12 +38,17 @@ export default function ImageOverlay({ show }: {
                 src={show.backdropImage || show.image}
                 alt={show.name}
                 className="hidden md:block object-fit rounded-lg w-auto aspect-5/3"
+                onLoadingComplete={() => setLoading(false)}
+                onError={() => {
+                setError(true);
+                setLoading(false);
+                }}
                 width={500}
                 height={300}
             />
 
             {/* Overlay image (conditional) */}
-            {show.isNetflixOriginal && (
+            {!loading && !error && show.isNetflixOriginal && (
                 <Image
                     src="images/overlay/NetflixOriginalOverlay.svg" // Your overlay image path
                     alt="Netflix Original"
@@ -34,7 +59,7 @@ export default function ImageOverlay({ show }: {
             )}
 
             {/* Overlay image (conditional) */}
-            {show.isTop10 && (
+            {!loading && !error && show.isTop10 && (
                 <Image
                     src="images/overlay/Top10Overlay.svg" // Your overlay image path
                     alt="Top10"
@@ -44,7 +69,7 @@ export default function ImageOverlay({ show }: {
                 />
             )}
 
-            {(show.type == 'tv' && show.status == 'new') && (
+            {!loading && !error && (show.type == 'tv' && show.status == 'new') && (
                 <Image
                     src="images/overlay/NewSeasonOverlay.svg" // Your overlay image path
                     alt="New Season"
