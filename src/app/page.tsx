@@ -10,7 +10,7 @@ export default async function Home() {
     <div className="h-screen">
       <Image
         src='/images/MainShowBackground.svg'
-        fill
+        fill quality={100}
         alt='Main Show Background'
         className='fixed top-0 left-0 -z-10 w-full h-auto object-cover object-[70%_center] lg:object-center'
         style={{
