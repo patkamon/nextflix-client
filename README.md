@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧪 Nextflix Client
 
-## Getting Started
+โปรเจกต์นี้ถูกสร้างด้วย [Next.js](https://nextjs.org/) — React Framework สำหรับการพัฒนาเว็บแอปพลิเคชันที่เร็วและมีประสิทธิภาพ
 
-First, run the development server:
+## 📦 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Next.js](https://nextjs.org/)
+- React
+- TypeScript
+- CSS Modules หรือ TailwindCSS 
+- Node.js & npm
+- primevue (carousel)
+- shadcn (dialog)
+- toastify
+
+---
+
+## 🚀 เริ่มต้นใช้งาน
+
+### 1. Clone โปรเจกต์
+
+```
+git clone {{link}}
+cd nextflix-client
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. ติดตั้ง dependencies
+```npm install```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. เริ่มรันเซิร์ฟเวอร์สำหรับพัฒนา
+```npm run dev```
+จากนั้นเปิดเบราว์เซอร์ที่ ```http://localhost:3000```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+### 📁 โครงสร้างโฟลเดอร์เบื้องต้น
+```
+nextflix-client/        
+├── public/             # ไฟล์ static เช่น รูปภาพ favicon        
+├── src/                # ไฟล์หน้าเว็บ เช่น index.js
+│   └── app/            # API Routes ของ Next.js
+│   │    └── components/       # molecules components สำหรับ page นั้นๆ
+│   │    └── page.tsx          # page แสดงหน้าต่างๆ
+│   └── api/            # รวม function สำหรับติดต่อกับหลังบ้าน
+│   └── components/     # atomic components ทั้งหมด
+│   └── data/           # mock ตัวอย่าง data
+│   └── interface/      # interface data
+│   └── lib/            # utility function
+├── .env.local          # ตัวแปรแวดล้อมเฉพาะเครื่อง
+├── next.config.js      # การตั้งค่าของ Next.js
+├── package.json        # ข้อมูล dependencies และ scripts
+└── README.md           # ไฟล์คู่มือการใช้งานโปรเจกต์
+```
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🎬 Movie Navigation
+- **Movie Detail Page**  
+  ผู้ใช้สามารถคลิกภาพยนตร์จาก Carousel เพื่อเข้าดูรายละเอียดของหนังหรือซีรีส์ได้อย่างลื่นไหล
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🎞 UI/UX Enhancements
+- **Carousel Animation**  
+  Carousel แสดงภาพยนตร์แบบ **auto-loop** พร้อม animation และ transition ที่นุ่มนวล
+- **Responsive Design**  
+  รองรับการแสดงผลทั้งบน **มือถือ (Mobile)** และ **เว็บไซต์ (Web)** อย่างเต็มรูปแบบ
 
-## Deploy on Vercel
+### 🚫 Error & State Handling
+- **404 Redirect**  
+  หากผู้ใช้เข้าหน้าที่ไม่มีอยู่ ระบบจะ redirect ไปยังหน้า 404 โดยอัตโนมัติ
+- **Toast Notifications**  
+  ใช้ [React Toastify](https://fkhadra.github.io/react-toastify/) แสดงข้อความแจ้งเตือนในกรณีต่าง ๆ เช่น:
+  - ข้อมูลว่าง (Empty state)
+  - ข้อผิดพลาด (Error state)
+- **Image Loading State**  
+  ขณะโหลดรูปภาพ แสดง loading indicator (loading text) เพื่อให้ผู้ใช้รู้ว่ากำลังโหลดอยู่
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🌙 Theme & Interaction
+- **Play Button with Dark Mode Support**  
+  ปุ่ม Play สามารถปรับสีหรือ style ได้อัตโนมัติตามธีม (Light/Dark) ที่ผู้ใช้ใช้งาน (detect ผ่าน browser)
+- **Dynamic Overlay Labels**  
+  แสดง badge/overlay บนภาพปก เช่น:
+  - 🔥 `Top 10`
+  - 🎬 `Netflix Original`
+  - 🆕 `New Season`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🧪 ตัวอย่าง .env.local
+ถ้าคุณใช้ตัวแปรแวดล้อม (เช่น API keys):
+```
+NEXT_PUBLIC_API_BASE_URL=https://api.example.com
+```
+✅ Note: ตัวแปรที่ขึ้นต้นด้วย NEXT_PUBLIC_ จะถูกเปิดเผยให้ฝั่ง client สามารถใช้ได้
