@@ -2,16 +2,16 @@
 
 import { SmallShowInterface } from '@/interface/SmallShowInterface';
 import { Carousel } from 'primereact/carousel'
-import ImageOverlay from '../overlay/ImageOverlay';
 import { toast } from 'react-toastify';
+import ShowDialog from '../dialog/ShowDialog';
 
-export default function PrimeCarousel({shows}: {
+export default function PrimeCarousel({ shows }: {
   shows: SmallShowInterface[] | null;
 }) {
   console.log(shows)
-  if (!shows){
+  if (!shows) {
     toast.error("Failed to fetch shows");
-  }else if (shows.length === 0) {
+  } else if (shows.length === 0) {
     toast.warn("Empty list, no shows to display");
     return <div className="text-white text-center">No shows available</div>;
   }
@@ -20,7 +20,7 @@ export default function PrimeCarousel({shows}: {
     return (
       <div className="ml-1">
         <div className={`h-fit rounded-lg shadow-md text-white text-xl`}>
-          <ImageOverlay show={item} />
+          <ShowDialog show={item} />
         </div>
       </div>
     )
